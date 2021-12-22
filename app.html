@@ -14,7 +14,7 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
 
 
 <script>
-    var chomp = new Audio('/chomp.mp3');
+    var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
     document.getElementById("petname").innerText = localStorage.petname;
     document.getElementById("petage").innerHTML = localStorage.petage;
     document.getElementById("feeds").innerHTML = localStorage.feeds;
