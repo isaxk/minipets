@@ -12,9 +12,12 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
 <button class="btn" onclick="window.location= '{{'/play' |  baseurl }}' "> Play </button><br><br>
 <a href="{{'/guide' |  baseurl }}">Pet Guide</a>
 
+<audio src="/background.mp3" autoplay loop id="backaudio"></audio>
 
 <script>
     var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
+    var backaudio = document.getElementById("backaudio");
+    backaudio.volume = 0.1;
     document.getElementById("petname").innerText = localStorage.petname;
     document.getElementById("petage").innerHTML = localStorage.petage;
     document.getElementById("feeds").innerHTML = localStorage.feeds;
