@@ -1,0 +1,77 @@
+---
+layout: default
+title: Pet Reveal
+permalink: /reveal
+---
+<button class="btn" onclick="play(); this.style.display='none'">Reveal</button>
+<div style="font-size: 20px; display: none;" id="intro">Introducing...</div>
+<div style="font-size: 26px; display: none;" id="reveal2">Your new pet...</div>
+<b><div style="font-size: 33px; display: none;" id="reveal3"></div></b>
+<div style="display: none;" id="reveal4"><img src="/pet0.png" style="width: 100%;"></div>
+<a href="/mypet" class="btn" id="reveal5" style="width: 100px; margin: auto; display: none;">Next</a>
+<div id="emitter"></div>
+<script>
+    var audio = new Audio('/podium.mp3');
+    document.getElementById("pet-name") = localStorage.petname;
+    function reveal1() {
+        document.getElementById("intro").style.display = "block";
+        window.setTimeout(reveal2, 4200, false);
+    }
+    function reveal2() {
+        document.getElementById("reveal2").style.display = "block";
+        window.setTimeout(reveal3, 3900, false);
+    }
+    function reveal3() {
+        document.getElementById("reveal3").innerText = localStorage.petname;
+        document.getElementById("reveal3").style.display = "block";
+        window.setTimeout(reveal4, 6000, false);
+    }
+    function reveal4() {
+        document.getElementById("reveal4").style.display = "block";
+        var count = 200;
+var defaults = {
+  origin: { y: 0.7 }
+};
+
+function fire(particleRatio, opts) {
+  confetti(Object.assign({}, defaults, opts, {
+    particleCount: Math.floor(count * particleRatio)
+  }));
+}
+
+fire(0.25, {
+  spread: 26,
+  startVelocity: 55,
+});
+fire(0.2, {
+  spread: 60,
+});
+fire(0.35, {
+  spread: 100,
+  decay: 0.91,
+  scalar: 0.8
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 25,
+  decay: 0.92,
+  scalar: 1.2
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 45,
+});
+        window.setTimeout(reveal5, 3000, false);
+    }
+    function reveal5() {
+        document.getElementById("reveal5").style.display = "block";
+    }
+    function play() {
+        
+        audio.play();
+        localStorage.originalunixage = Date.now() + 3399999;
+        console.log(localStorage.originalunixage)
+        window.setTimeout(reveal1, 500, false);
+        
+    }
+</script>

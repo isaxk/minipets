@@ -1,0 +1,56 @@
+---
+layout: default
+permalink: /mypet
+title: Your Pet
+---
+<div style="font-size: 30px;" id="petname">...</div>
+Age: <b><span id="petage">...</span></b> <br>
+Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br><small>(1 year =
+    3 real days)</small>
+<img src="about:blank" alt="" id="petimg" width="100%">
+<button class="btn" onclick="feed();">Feed (<span id="feeds">...</span>)</button>
+<button class="btn" onclick="window.location='/play'"> Play </button><br><br>
+<a href="/guide">Pet Guide</a>
+
+
+<script>
+    var chomp = new Audio('/chomp.mp3');
+    document.getElementById("petname").innerText = localStorage.petname;
+    document.getElementById("petage").innerHTML = localStorage.petage;
+    document.getElementById("feeds").innerHTML = localStorage.feeds;
+    document.getElementById("hunger").innerHTML = localStorage.hunger;
+    document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
+    const start = Date.now();
+    if (start - localStorage.originalunixage > 259200) {
+        localStorage.petage = 1;
+        document.getElementById("petage").innerHTML = localStorage.petage;
+    }
+    else {
+        localStorage.originalunixage = Date.now();
+    }
+    function feed() {
+        if (localStorage.hunger == 0) {
+            return;
+        }
+        if (localStorage.feeds == 0) {
+            if (bondpoints < 10) {
+                return;
+            }
+            localStorage.bondpoints = localStorage.bondpoints - 10;
+            localStorage.feeds += 5;
+            document.getElementById("feeds").innerHTML = localStorage.feeds;
+            document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
+        }
+        chomp.play();
+        localStorage.feeds = localStorage.feeds - 1;
+        localStorage.hunger = localStorage.hunger - 1;
+        document.getElementById("feeds").innerHTML = localStorage.feeds;
+        document.getElementById("hunger").innerHTML = localStorage.hunger;
+        if (localStorage.hunger == 0) {
+            localStorage.bondpoints = parseInt(localStorage.bondpoints) + 8;
+            document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
+        }
+    }
+    document.getElementById("petimg").src = "pet" + (localStorage.petage) + ".png";
+    console.log(start);
+</script>

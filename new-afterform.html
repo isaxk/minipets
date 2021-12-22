@@ -1,0 +1,62 @@
+---
+layout: default
+title: Making new pet...
+permalink: /newpet/submit
+---
+We're getting '<span id="pet-name">your pet</span>' ready
+
+<br><br>
+<br><br>
+
+
+<div id="loadingtext">Initializing...</div><br><br>
+<a href="/reveal" class="btn" id="launch-btn" style="display: none; transition: display 1s; width: 200px; margin: auto;">Show me my pet!</a>
+
+
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const name = urlParams.get('name');
+    document.getElementById("pet-name").innerHTML = name;
+    localStorage.petname = name;
+    const gender = urlParams.get('gender');
+    localStorage.petgender = gender;
+    localStorage.newpet = true;
+    localStorage.petage = 0;
+    localStorage.feeds = 5;
+    localStorage.bondpoints = 40;
+    localStorage.hunger = 7;
+    
+</script>
+
+<script>
+    window.setTimeout(function() {
+        document.getElementById("launch-btn").style.display = "block";
+    }, 11000, true)
+</script>
+
+<script>
+    const loadingtext = [
+        'Deciding personality',
+        'Setting traits',
+        'Deciding strengths',
+        'Choosing weaknessess'
+    ]
+    var loadingtextbox = document.getElementById("loadingtext");
+    var i = 0;                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        setTimeout(function () {   //  call a 3s setTimeout when the loop is called
+            loadingtextbox.innerHTML = loadingtext[i] + "...";   //  your code here
+            i++;                    //  increment the counter
+            if (i < 5) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }
+            else {
+                loadingtextbox.innerHTML = "Your pet is ready!";
+            }                     //  ..  setTimeout()
+        }, 2000)
+    }
+
+    myLoop();
+</script>
