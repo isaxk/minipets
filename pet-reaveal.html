@@ -8,10 +8,10 @@ permalink: /reveal
 <div style="font-size: 26px; display: none;" id="reveal2">Your new pet...</div>
 <b><div style="font-size: 33px; display: none;" id="reveal3"></div></b>
 <div style="display: none;" id="reveal4"><img src="/pet0.png" style="width: 100%;"></div>
-<a href="/mypet" class="btn" id="reveal5" style="width: 100px; margin: auto; display: none;">Next</a>
+<a href="{{'/mypet' |  baseurl }}" class="btn" id="reveal5" style="width: 100px; margin: auto; display: none;">Next</a>
 <div id="emitter"></div>
 <script>
-    var audio = new Audio('/podium.mp3');
+    var audio = new Audio('{{"/chomp.mp3" |  baseurl }}');
     document.getElementById("pet-name") = localStorage.petname;
     function reveal1() {
         document.getElementById("intro").style.display = "block";
