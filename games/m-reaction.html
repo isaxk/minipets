@@ -79,6 +79,9 @@ permalink: /play/reaction/go
             document.getElementById("btns").style.display = "block";
             localStorage.hunger = parseInt(localStorage.hunger) + 2;
             localStorage.bondpoints=parseInt(localStorage.bondpoints) + 13;
+            if(localStorage.hunger > 4) {
+                localStorage.bondpoints==parseInt(localStorage.bondpoints) - 5;
+            }
             return;
         }
         count++;
