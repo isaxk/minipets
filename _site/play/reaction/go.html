@@ -57,7 +57,7 @@
     function appearAfterDelay() {
         setTimeout(makeShapeAppear, Math.random() * 2000);
     }
-    document.getElementById("shape").onclick = function () {
+    document.getElementById("shape").onmousedown = function () {
         document.getElementById("shape").style.display = "none";
         var end = new Date().getTime();
         var timeTaken = (end - start) / 1000;
@@ -65,7 +65,7 @@
         avrg[count] = timeTaken;
         console.log(avrg);
         if (count == 15) {
-            average = ((((avrg.reduce((a, b) => a + b, 0)) / avrg.length)) - 0.05).toFixed(2);
+            average = (((avrg.reduce((a, b) => a + b, 0)) / avrg.length)).toFixed(2);
             if (average < 0.18) {
                 cheatcheck();
             }
