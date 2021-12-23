@@ -20,10 +20,9 @@
 
 <script>
     function redirect() {
-        if(localStorage.gotpet == true) {
+        if(localStorage.petname) {
             window.location = "/mypet";
         }
-    
     }
     redirect();
 </script>

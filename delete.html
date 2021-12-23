@@ -9,7 +9,7 @@ Are you sure you want to release '<span id="petname"></span>' into the wild. You
 
 <script>
     function release() {
-        localStorage.havepet = false;
+        localStorage.clear();
         window.location = "/";
     }
     document.getElementById('petname').innerText = localStorage.petname;

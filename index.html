@@ -11,10 +11,9 @@ Get a pet, feed it, bond with it, play with it, share it with your friends!
 
 <script>
     function redirect() {
-        if(localStorage.gotpet == true) {
+        if(localStorage.petname) {
             window.location = "/mypet";
         }
-    
     }
     redirect();
 </script>
