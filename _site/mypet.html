@@ -1,9 +1,18 @@
----
-layout: default
-permalink: /mypet
-title: Your Pet
----
-<div style="font-size: 30px;" id="petname">...</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Pet</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="content">
+        <h1><br>Your Pet</h1>
+        <hr>
+         <div style="font-size: 30px;" id="petname">...</div>
 <!--Age: <b><span id="petage">...</span></b> <br>-->
 Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br>
 <!--<small>(1 year =
@@ -11,14 +20,14 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
 
 <img src="about:blank" alt="" id="petimg" width="100%">
 <button class="btn" onclick="feed();" id="feeds">Feed (0)</button>
-<button class="btn" onclick="window.location= '{{'/play' |  baseurl }}' "> Play </button>
+<button class="btn" onclick="window.location= '/play' "> Play </button>
 <button class="btn" onclick="share();">Share</button><br><br>
 <a href="#" onclick="help();">Pet Guide</a><br>
 <a href="/delete">Release into the wild</a>
 <audio src="/background.mp3" autoplay loop id="backaudio"></audio>
 
 <script>
-    var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
+    var chomp = new Audio('/chomp.mp3');
     var backaudio = document.getElementById("backaudio");
     backaudio.volume = 0.1;
     localStorage.havepet = true;
@@ -91,3 +100,10 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
         alert("Pet Guide:\n\n-Hunger-:\nWhen you get to zero feeds, if you click it will give you 5 feeds and feed your pet (sum of 4), but will cost 10 bond points. If hunger reaches 10 you will lose 25 bond points!\n\n-Play-:\nPlaying a game gives you 7-25 bond points but costs 2 hunger.")
     }
 </script>
+         <footer>
+        &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
+    </footer>
+    </div>
+    
+</body>
+</html>
