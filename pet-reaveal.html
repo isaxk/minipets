@@ -7,24 +7,24 @@ permalink: /reveal
 <div style="font-size: 20px; display: none;" id="intro">Introducing...</div>
 <div style="font-size: 26px; display: none;" id="reveal2">Your new pet...</div>
 <b><div style="font-size: 33px; display: none;" id="reveal3"></div></b>
-<div style="display: none;" id="reveal4"><img src="/pet0.png" style="width: 100%;"></div>
+<div style="display: none;" id="reveal4"><img src="" id="petimg" style="width: 100%;"></div>
 <a href="{{'/mypet' |  baseurl }}" class="btn" id="reveal5" style="width: 100px; margin: auto; display: none;">Next</a>
 <div id="emitter"></div>
 <script>
     var audio = new Audio('{{"/podium.mp3" |  baseurl }}');
-    document.getElementById("pet-name") = localStorage.petname;
+    document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/0.png";
     function reveal1() {
         document.getElementById("intro").style.display = "block";
-        window.setTimeout(reveal2, 4200, false);
+        window.setTimeout(reveal2, 3900, false);
     }
     function reveal2() {
         document.getElementById("reveal2").style.display = "block";
-        window.setTimeout(reveal3, 3900, false);
+        window.setTimeout(reveal3, 6000, false);
     }
     function reveal3() {
         document.getElementById("reveal3").innerText = localStorage.petname;
         document.getElementById("reveal3").style.display = "block";
-        window.setTimeout(reveal4, 6000, false);
+        reveal4();
     }
     function reveal4() {
         document.getElementById("reveal4").style.display = "block";
@@ -71,7 +71,7 @@ fire(0.1, {
         audio.play();
         localStorage.originalunixage = Date.now() + 3399999;
         console.log(localStorage.originalunixage)
-        window.setTimeout(reveal1, 500, false);
+        window.setTimeout(reveal1, 4600, false);
         
     }
 </script>

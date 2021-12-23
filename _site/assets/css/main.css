@@ -26,6 +26,9 @@ html, body {
     text-align: center;
     width: 100%;
 }
+a {
+    color: blue;
+}
 .btn {
     background-color: blue;
     color: white;

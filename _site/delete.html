@@ -4,29 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniPet</title>
+    <title>Release into the wild</title>
     <link rel="stylesheet" href="/assets/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
 </head>
 <body>
     <div class="content">
-        <h1><br>MiniPet</h1>
+        <h1><br>Release into the wild</h1>
         <hr>
-         Get a pet, feed it, bond with it, play with it, share it with your friends!
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-<a href="/newpet/submit" class="btn">Get a pet now!</a>
+         Are you sure you want to release '<span id="petname"></span>' into the wild. You may never see them again?
+<br><br><br>
+<button class="btn" onclick="release()">OK</button>
 
 <script>
-    function redirect() {
-        if(localStorage.gotpet == true) {
-            window.location = "/mypet";
-        }
-    
+    function release() {
+        localStorage.havepet = false;
+        window.location = "/";
     }
-    redirect();
+    document.getElementById('petname').innerText = localStorage.petname;
 </script>
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>

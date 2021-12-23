@@ -6,11 +6,12 @@ title: Your Pet
 <div style="font-size: 30px;" id="petname">...</div>
 Age: <b><span id="petage">...</span></b> <br>
 Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br><small>(1 year =
-    3 real days)</small>
+    3 real days)</small><br>
+    <a href="/delete">Release into the wild</a>
 <img src="about:blank" alt="" id="petimg" width="100%">
 <button class="btn" onclick="feed();">Feed (<span id="feeds">...</span>)</button>
 <button class="btn" onclick="window.location= '{{'/play' |  baseurl }}' "> Play </button><br><br>
-<a href="{{'/guide' |  baseurl }}">Pet Guide</a>
+<a href="{{'/guide' |  baseurl }}">Pet Guide</a><br>
 
 <audio src="/background.mp3" autoplay loop id="backaudio"></audio>
 
@@ -18,6 +19,7 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
     var backaudio = document.getElementById("backaudio");
     backaudio.volume = 0.1;
+    localStorage.havepet = true;
     document.getElementById("petname").innerText = localStorage.petname;
     document.getElementById("petage").innerHTML = localStorage.petage;
     document.getElementById("feeds").innerHTML = localStorage.feeds;
@@ -54,6 +56,6 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
             document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
         }
     }
-    document.getElementById("petimg").src = "pet" + (localStorage.petage) + ".png";
+    document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0" + ".png";
     console.log(start);
 </script>
