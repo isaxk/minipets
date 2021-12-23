@@ -6,15 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play with my pet</title>
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function newbeez() {
+            if(window.location.pathname == "/") return;
+            if(window.location.pathname == "/newpet") return;
+            if(window.location.pathname == "/share") return;
+            if(localStorage.petname) return;
+            window.location = "/";
+        }
+        newbeez();
+    </script>
 </head>
 <body>
-    <div class="content">
-        <h1><br>Play with my pet</h1>
+    <div class="content"><br>
+        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Play with my pet</h1>
         <hr>
          <a href="/" style="text-align: left;">&lt; Back</a>
 <br><br><br>
 <a href="/play/reaction" class="btn">Reactions</a>
+
+<script>
+    if(localStorage.hunger > 7) {
+        alert("Your pet is too hungry to play any games.\n\n\n*Feed your pet!*");
+        window.location = "/mypet";
+    }
+</script>
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
     </footer>
