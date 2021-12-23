@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{'/assets/css/main.css' |  baseurl }}">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function newbeez() {
+            if(window.location.pathname == "/") return;
+            if(window.location.pathname == "/newpet") return;
+            if(window.location.pathname == "/share") return;
+            if(localStorage.petname) return;
+            window.location = "/";
+        }
+        newbeez();
+    </script>
 </head>
 <body>
-    <div class="content">
-        <h1><br>{{page.title}}</h1>
+    <div class="content"><br>
+        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">{{page.title}}</h1>
         <hr>
          {{ content }}
          <footer>
