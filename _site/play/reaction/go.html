@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Game</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="content">
+        <h1><br>Reaction Game</h1>
+        <hr>
+         <style>
+    #shape {
+
+        width: 150px;
+        display: none;
+        position: relative;
+
+    }
+</style><br>
+<div id="timeTaken"></div>
+<div id="bondPoints"></div>
+<div id="hunger"></div><br><br>
+<div id="btns" style="display: none;">
+    <a href="" class="btn">Play again</a>
+    <a href="/mypet" class="btn">Go back to my pet</a>
+    <a href="/play" class="btn">Play more games</a>
+</div>
+<img src="" id="shape">
+<script type="text/javascript">
+    document.getElementById("shape").src = "/assets/img/pets/" + localStorage.petlook + "/" + localStorage.petage + ".png";
+    var count = 0;
+    var avrg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var start = new Date().getTime();
+    var average;
+    function set() {
+        count = 0;
+        avrg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        average = 0;
+        appearAfterDelay();
+        document.getElementById("share-btn").value = "";
+    }
+    function makeShapeAppear() {
+        var top = Math.random() * 200;
+        var left = Math.random() * 200;
+        var width = (Math.random() * 200) + 100;
+        document.getElementById("shape").style.width = width + "px";
+        document.getElementById("shape").style.height = width + "px";
+        document.getElementById("shape").style.top = top + "px";
+        document.getElementById("shape").style.left = left + "px";
+        document.getElementById("shape").style.display = "block";
+        start = new Date().getTime();
+    }
+    function appearAfterDelay() {
+        setTimeout(makeShapeAppear, Math.random() * 2000);
+    }
+    document.getElementById("shape").onclick = function () {
+        document.getElementById("shape").style.display = "none";
+        var end = new Date().getTime();
+        var timeTaken = (end - start) / 1000;
+        var bondpoints = 0;
+        avrg[count] = timeTaken;
+        console.log(avrg);
+        if (count == 15) {
+            average = ((((avrg.reduce((a, b) => a + b, 0)) / avrg.length)) - 0.05).toFixed(2);
+            if (average < 0.18) {
+                cheatcheck();
+            }
+            if (average < 0.32) {
+                bondpoints+=3;
+            }
+            if (average < 0.38) {
+                bondpoints+=4;
+            }
+            if (average < 0.43) {
+                bondpoints+=5;
+            }
+            if (average < 0.60) {
+                bondpoints+=6;
+            }
+            bondpoints+=7;
+            document.getElementById("timeTaken").innerHTML = "You got an average time of: " + average + "s";
+            document.getElementById("bondPoints").innerHTML = "And earned: " + bondpoints + " Bond Points!";
+            document.getElementById("hunger").innerHTML = "But your pet got 2 Hunger!";
+            document.getElementById("btns").style.display = "block";
+            localStorage.hunger = parseInt(localStorage.hunger) + 2;
+            localStorage.bondpoints=parseInt(localStorage.bondpoints) + 13;
+            return;
+        }
+        count++;
+        appearAfterDelay();
+
+    }
+
+    function share(score) {
+        const shareData = {
+            title: "Can you beat my reation tester score?",
+            text: "I just got a score of" + score + "s on 'Reaction tester' a game on isaboo.co.uk. See if you can beat my score by clicking on the link below!",
+            url: "https://www.isaboo.co.uk/reactiontester"
+        }
+        navigator.share(shareData);
+    }
+    nos = 0;
+    var cheattext = "";
+    function cheatcheck() {
+        if (confirm("Did you cheat?\nClick Cancel if you didn't")) {
+            prompt("Thanks for admitting it!");
+            window.location = "";
+        }
+        else {
+            cheatloop();
+        }
+    }
+    function cheatloop() {
+        cheattext += " really"
+        if (confirm(cheattext + "?")) {
+            alert("Thanks for admitting it!");
+            window.location = "";
+        }
+        else {
+            nos++;
+            cheatloop();
+        }
+    }
+    set();
+    var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+        if (supportsTouch) {
+            
+            window.location = "/play/reaction/go/m";
+        }
+</script>
+         <footer>
+        &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
+    </footer>
+    </div>
+    
+</body>
+</html>
