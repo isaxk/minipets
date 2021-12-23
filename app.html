@@ -1,93 +1,123 @@
 ---
 layout: default
-permalink: /mypet
-title: Your Pet
+title: Reaction Game
+permalink: /play/reaction/go/m
 ---
-<div style="font-size: 30px;" id="petname">...</div>
-<!--Age: <b><span id="petage">...</span></b> <br>-->
-Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br>
-<!--<small>(1 year =
-    3 real days)</small><br>-->
+<style>
+    #shape {
 
-<img src="about:blank" alt="" id="petimg" width="100%">
-<button class="btn" onclick="feed();" id="feeds">Feed (0)</button>
-<button class="btn" onclick="window.location= '{{'/play' |  baseurl }}' "> Play </button>
-<button class="btn" onclick="share();">Share</button><br><br>
-<a href="#" onclick="help();">Pet Guide</a><br>
-<a href="/delete">Release into the wild</a>
-<audio src="/background.mp3" autoplay loop id="backaudio"></audio>
+        width: 150px;
+        display: none;
+        position: relative;
 
-<script>
-    var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
-    var backaudio = document.getElementById("backaudio");
-    backaudio.volume = 0.1;
-    localStorage.havepet = true;
-    document.getElementById("petname").innerText = localStorage.petname;
-    // document.getElementById("petage").innerHTML = localStorage.petage;
-    document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
-    if (localStorage.feeds == 0) {
-        document.getElementById("feeds").innerHTML = "Buy Feeds";
     }
-    document.getElementById("hunger").innerHTML = localStorage.hunger;
-    document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
-    const start = Date.now();
-    if (start - localStorage.originalunixage > 259200) {
-        localStorage.petage = 1;
-        // document.getElementById("petage").innerHTML = localStorage.petage;
-        localStorage.originalunixage = Date.now();
+</style>
+<div id="timeTaken"></div>
+<div id="bondPoints"></div>
+<div id="hunger"></div><br><br>
+<div id="btns" style="display: none;">
+    <a href="" class="btn">Play again</a><br><br>
+    <a href="/mypet" class="btn">Back to my pet</a><br><br>
+    <a href="/play" class="btn">More games</a>
+</div>
+<img src="" id="shape">
+<script type="text/javascript">
+    document.getElementById("shape").src = "/assets/img/pets/" + localStorage.petlook + "/" + localStorage.petage + ".png";
+    var count = 0;
+    var avrg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var start = new Date().getTime();
+    var average;
+    function set() {
+        count = 0;
+        avrg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        average = 0;
+        appearAfterDelay();
+        document.getElementById("share-btn").value = "";
     }
-    function feed() {
-        if (localStorage.hunger == 0) {
-            alert("Your pet is full up and doesn't require food.")
+    function makeShapeAppear() {
+        var top = Math.random() * 200;
+        var left = Math.random() * 200;
+        var width = (Math.random() * 200) + 100;
+        document.getElementById("shape").style.width = width + "px";
+        document.getElementById("shape").style.height = width + "px";
+        document.getElementById("shape").style.top = top + "px";
+        document.getElementById("shape").style.left = left + "px";
+        document.getElementById("shape").style.display = "block";
+        start = new Date().getTime();
+    }
+    function appearAfterDelay() {
+        setTimeout(makeShapeAppear, Math.random() * 2000);
+    }
+    document.getElementById("shape").ontouchstart = function () {
+        document.getElementById("shape").style.display = "none";
+        var end = new Date().getTime();
+        var timeTaken = (end - start) / 1000;
+        var bondpoints = 0;
+        avrg[count] = timeTaken;
+        console.log(avrg);
+        if (count == 15) {
+            average = ((avrg.reduce((a, b) => a + b, 0)) / avrg.length).toFixed(2);
+            if (average < 0.18) {
+                cheatcheck();
+            }
+            if (average < 0.32) {
+                bondpoints+=3;
+            }
+            if (average < 0.38) {
+                bondpoints+=4;
+            }
+            if (average < 0.43) {
+                bondpoints+=5;
+            }
+            if (average < 0.60) {
+                bondpoints+=6;
+            }
+            bondpoints+=7;
+            document.getElementById("timeTaken").innerHTML = "You got an average time of: " + average + "s";
+            document.getElementById("bondPoints").innerHTML = "And earned: " + bondpoints + " Bond Points!";
+            document.getElementById("hunger").innerHTML = "But your pet got 2 Hunger!";
+            document.getElementById("btns").style.display = "block";
+            localStorage.hunger = parseInt(localStorage.hunger) + 2;
+            localStorage.bondpoints=parseInt(localStorage.bondpoints) + 13;
+            if(localStorage.hunger > 4) {
+                localStorage.bondpoints==parseInt(localStorage.bondpoints) - 5;
+            }
             return;
-
         }
-        if (localStorage.feeds == 0) {
+        count++;
+        appearAfterDelay();
 
-            if (bondpoints < 8) {
-                alert("Can't afford feeds. 8 bond points required.")
-                return;
-            }
-            if (confirm("This will cost 8 bond points and give you 5 feeds. Would you like to continue?")) {
-                localStorage.bondpoints = parseInt(localStorage.bondpoints) - 8;
-                localStorage.feeds = parseInt(localStorage.feeds) + 5;
-                document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
-                document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
-                return;
-            }
-
-
-
-        }
-        chomp.play();
-        localStorage.feeds = localStorage.feeds - 1;
-        localStorage.hunger = localStorage.hunger - 1;
-        document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
-        document.getElementById("hunger").innerHTML = localStorage.hunger;
-        if (localStorage.hunger == 0) {
-            localStorage.bondpoints = parseInt(localStorage.bondpoints) + 5;
-            document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
-        }
-        if (localStorage.feeds == 0) {
-            document.getElementById("feeds").innerHTML = "Buy feeds";
-        }
-    }
-    document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0" + ".png";
-    console.log(start);
-
-    const shareData = {
-        title: 'I got a new pet!',
-        text: 'I got a new pet on \'MiniPet\' by isaboo.co.uk. Click on the link to see what I got and make your own!',
-        url: 'https://minipet.isaboo.co.uk/share?n=' + localStorage.petname + '&l=' + localStorage.petlook + '/0&g=' + localStorage.petgender + '&b=' + localStorage.bondpoints
     }
 
-    // Share must be triggered by "user activation"
-
-    function share() {
+    function share(score) {
+        const shareData = {
+            title: "Can you beat my reation tester score?",
+            text: "I just got a score of" + score + "s on 'Reaction tester' a game on isaboo.co.uk. See if you can beat my score by clicking on the link below!",
+            url: "https://www.isaboo.co.uk/reactiontester"
+        }
         navigator.share(shareData);
     }
-
-    function help() {
-        alert("Pet Guide:\n\n-Hunger-:\nWhen you get to zero feeds, if you click it will give you 5 feeds and feed your pet (sum of 4), but will cost 10 bond points. If hunger reaches 10 you will lose 25 bond points!\n\n-Play-:\nPlaying a game gives you 7-25 bond points but costs 2 hunger.")
+    nos = 0;
+    var cheattext = "";
+    function cheatcheck() {
+        if (confirm("Did you cheat?\nClick Cancel if you didn't")) {
+            prompt("Thanks for admitting it!");
+            window.location = "";
+        }
+        else {
+            cheatloop();
+        }
     }
+    function cheatloop() {
+        cheattext += " really"
+        if (confirm(cheattext + "?")) {
+            alert("Thanks for admitting it!");
+            window.location = "";
+        }
+        else {
+            nos++;
+            cheatloop();
+        }
+    }
+    set();
 </script>
