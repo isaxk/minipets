@@ -6,72 +6,97 @@ permalink: /reveal
 <button class="btn" onclick="play(); this.style.display='none'">Reveal</button>
 <div style="font-size: 20px; display: none;" id="intro">Introducing...</div>
 <div style="font-size: 26px; display: none;" id="reveal2">Your new pet...</div>
-<b><div style="font-size: 33px; display: none;" id="reveal3"></div></b>
+<b>
+	<div style="font-size: 33px; display: none;" id="reveal3"></div>
+</b>
 <div style="display: none;" id="reveal4"><img src="" id="petimg" style="width: 100%;"></div>
-<a href="{{'/mypet' |  baseurl }}" class="btn" id="reveal5" style="width: 100px; margin: auto; display: none;">Next</a>
+<div id="reveal5" style="display: none;">
+	<a href="{{'/mypet' |  baseurl }}" class="btn" id="reveal5" style="width: 100px; margin: auto;">Next</a>
+	<button class="btn" onclick="share();">Share my new pet</button>
+</div>
+
 <div id="emitter"></div>
 <script>
-    var audio = new Audio('{{"/podium.mp3" |  baseurl }}');
-    document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/0.png";
-    function reveal1() {
-        document.getElementById("intro").style.display = "block";
-        window.setTimeout(reveal2, 3900, false);
-    }
-    function reveal2() {
-        document.getElementById("reveal2").style.display = "block";
-        window.setTimeout(reveal3, 6000, false);
-    }
-    function reveal3() {
-        document.getElementById("reveal3").innerText = localStorage.petname;
-        document.getElementById("reveal3").style.display = "block";
-        reveal4();
-    }
-    function reveal4() {
-        document.getElementById("reveal4").style.display = "block";
-        var count = 200;
-var defaults = {
-  origin: { y: 0.7 }
-};
+	var audio = new Audio('{{"/podium.mp3" |  baseurl }}');
+	document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/0.png";
+	function reveal1() {
+		document.getElementById("intro").style.display = "block";
+		window.setTimeout(reveal2, 3900, false);
+	}
+	function reveal2() {
+		document.getElementById("reveal2").style.display = "block";
+		window.setTimeout(reveal3, 6000, false);
+	}
+	function reveal3() {
+		document.getElementById("reveal3").innerText = localStorage.petname;
+		document.getElementById("reveal3").style.display = "block";
+		reveal4();
+	}
+	function reveal4() {
+		document.getElementById("reveal4").style.display = "block";
+		var count = 200;
+		var defaults = {
+			origin: { y: 0.7 }
+		};
 
-function fire(particleRatio, opts) {
-  confetti(Object.assign({}, defaults, opts, {
-    particleCount: Math.floor(count * particleRatio)
-  }));
-}
+		function fire(particleRatio, opts) {
+			confetti(Object.assign({}, defaults, opts, {
+				particleCount: Math.floor(count * particleRatio)
+			}));
+		}
 
-fire(0.25, {
-  spread: 26,
-  startVelocity: 55,
-});
-fire(0.2, {
-  spread: 60,
-});
-fire(0.35, {
-  spread: 100,
-  decay: 0.91,
-  scalar: 0.8
-});
-fire(0.1, {
-  spread: 120,
-  startVelocity: 25,
-  decay: 0.92,
-  scalar: 1.2
-});
-fire(0.1, {
-  spread: 120,
-  startVelocity: 45,
-});
-        window.setTimeout(reveal5, 3000, false);
-    }
-    function reveal5() {
-        document.getElementById("reveal5").style.display = "block";
-    }
-    function play() {
-        
-        audio.play();
-        localStorage.originalunixage = Date.now() + 3399999;
-        console.log(localStorage.originalunixage)
-        window.setTimeout(reveal1, 4600, false);
-        
-    }
+		fire(0.25, {
+			spread: 26,
+			startVelocity: 55,
+		});
+		fire(0.2, {
+			spread: 60,
+		});
+		fire(0.35, {
+			spread: 100,
+			decay: 0.91,
+			scalar: 0.8
+		});
+		fire(0.1, {
+			spread: 120,
+			startVelocity: 25,
+			decay: 0.92,
+			scalar: 1.2
+		});
+		fire(0.1, {
+			spread: 120,
+			startVelocity: 45,
+		});
+		window.setTimeout(reveal5, 3000, false);
+	}
+	function reveal5() {
+		document.getElementById("reveal5").style.display = "block";
+	}
+	function play() {
+
+		audio.play();
+		localStorage.originalunixage = Date.now() + 3399999;
+		console.log(localStorage.originalunixage)
+		window.setTimeout(reveal1, 4600, false);
+
+	}
+	const shareData = {
+		title: 'I got a new pet!',
+		text: 'I got a new pet on \'MiniPet\' by isaboo.co.uk. Click on the link to see what I got and make your own!',
+		url: 'https://minipet.isaboo.co.uk/share?n' + localStorage.petname + '&l=' + localStorage.petlook + '&g=' + localStorage.petgender
+	}
+
+	// Share must be triggered by "user activation"
+	btn.addEventListener('click', async () => {
+		try {
+			await navigator.share(shareData)
+			resultPara.textContent = 'MDN shared successfully'
+		} catch (err) {
+			resultPara.textContent = 'Error: ' + err
+		}
+	});
+
+	function share() {
+		await navigator.share(shareData);
+	}
 </script>
