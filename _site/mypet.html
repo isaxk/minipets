@@ -19,7 +19,8 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     
 <img src="about:blank" alt="" id="petimg" width="100%">
 <button class="btn" onclick="feed();">Feed (<span id="feeds">...</span>)</button>
-<button class="btn" onclick="window.location= '/play' "> Play </button><br><br>
+<button class="btn" onclick="window.location= '/play' "> Play </button>
+<button class="btn" onclick="share();">Share</button><br><br>
 <a href="/guide">Pet Guide</a><br>
 <a href="/delete">Release into the wild</a>
 <audio src="/background.mp3" autoplay loop id="backaudio"></audio>
@@ -65,6 +66,18 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     }
     document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0" + ".png";
     console.log(start);
+
+    const shareData = {
+		title: 'I got a new pet!',
+		text: 'I got a new pet on \'MiniPet\' by isaboo.co.uk. Click on the link to see what I got and make your own!',
+		url: 'https://minipet.isaboo.co.uk/share?n=' + localStorage.petname + '&l=' + localStorage.petlook + '/0&g=' + localStorage.petgender + '&b=' + localStorage.bondpoints
+	}
+
+	// Share must be triggered by "user activation"
+
+	function share() {
+		navigator.share(shareData);
+	}
 </script>
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>

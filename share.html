@@ -16,7 +16,7 @@ ogdesc: Click here to see what pet I got and to see if you get the same one.
 <body>
 
 
-    <h3 style="font-style: normal;"><span id="pronoun">Their</span> name is <b id="petname"></b>.</h3>
+    <h3 style="font-style: normal;"><span id="pronoun">Their</span> name is <b id="petname"></b>. And we have <span id="points"></span> bond points.</h3>
     <img src="" width="100%" id="petimg"><br><br><br>
     <a href="/" class="btn">Get your own pet here!</a>
     <script>
@@ -26,6 +26,7 @@ ogdesc: Click here to see what pet I got and to see if you get the same one.
         const name = urlParams.get('n');
         const look = urlParams.get('l');
         const gender = urlParams.get('g');
+        const points = urlParams.get('b');
         document.getElementById("petname").innerText = name;
         if (gender == "m") {
             document.getElementById("pronoun").innerText = "His";
@@ -34,5 +35,6 @@ ogdesc: Click here to see what pet I got and to see if you get the same one.
             document.getElementById("pronoun").innerText = "Her";
         }
         document.getElementById("petname").innerText = name;
+        document.getElementById("points").innerText = points;
         document.getElementById("petimg").src = "/assets/img/pets/" + look + "/0.png";
     </script>
