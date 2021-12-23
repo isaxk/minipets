@@ -13,7 +13,7 @@
     <div class="content">
         <h1><br>Making new pet...</h1>
         <hr>
-         We're getting '<span id="pet-name">your pet</span>' ready
+         We're getting <span id="pet-name">your pet</span> ready
 
 <br><br>
 <br><br>
@@ -24,12 +24,18 @@
 
 
 <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const name = urlParams.get('name');
-    document.getElementById("pet-name").innerHTML = name;
+    const pets = [
+        {look: 'mr.blobby', name: 'Mr. Blobby', gender: 'm'},
+        {look: 'tadpole', name: 'Miss. Wiggle', gender: 'f'},
+        {look: 'mr.spike', name: 'Mr. Spike', gender: 'm'},
+    ]
+    var randomno = Math.floor(Math.random() * 2);
+    const name = pets[randomno].name;
+    const look = pets[randomno].look;
+    const gender = pets[randomno].gender;
+    localStorage.gotpet = true;
     localStorage.petname = name;
-    const gender = urlParams.get('gender');
+    localStorage.petlook = look;
     localStorage.petgender = gender;
     localStorage.newpet = true;
     localStorage.petage = 0;

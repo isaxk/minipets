@@ -3,8 +3,18 @@ layout: default
 permalink: /
 title: MiniPet
 ---
-Create your dream pet and watch it grow.
+Get a pet, feed it, bond with it, play with it, share it with your friends!
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
 
-<a href="{{'/newpet' |  baseurl }}" class="btn">Create my pet today</a>
+<a href="{{'/newpet/submit' |  baseurl }}" class="btn">Get a pet now!</a>
+
+<script>
+    function redirect() {
+        if(localStorage.gotpet == true) {
+            window.location = "/mypet";
+        }
+    
+    }
+    redirect();
+</script>
