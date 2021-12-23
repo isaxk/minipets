@@ -1,0 +1,37 @@
+---
+layout: default
+permalink: /share
+title: Do you like my new pet?
+ogdesc: Click here to see what pet I got and to see if you get the same one.
+---
+</body>
+
+<head>
+    <meta property="og:title" content="I got a new MiniPet!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:description" content="Click here to see what MiniPet I got and see if you get the same one!" />
+</head>
+
+<body>
+
+
+    <h3 style="font-style: normal;"><span id="pronoun">Their</span> name is <b id="petname"></b>.</h3>
+    <img src="" width="100%" id="petimg"><br><br><br>
+    <a href="/" class="btn">Get your own pet here!</a>
+    <script>
+        const queryString = window.location.search;
+        console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        const name = urlParams.get('n');
+        const look = urlParams.get('l');
+        const gender = urlParams.get('g');
+        document.getElementById("petname").innerText = name;
+        if (gender == "m") {
+            document.getElementById("pronoun").innerText = "His";
+        }
+        if (gender == "f") {
+            document.getElementById("pronoun").innerText = "Her";
+        }
+        document.getElementById("petimg").src = "/assets/img/pets/" + look + ".png";
+    </script>

@@ -7,7 +7,6 @@
     <title>Your Pet</title>
     <link rel="stylesheet" href="/assets/css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
 </head>
 <body>
     <div class="content">
@@ -39,8 +38,6 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     if (start - localStorage.originalunixage > 259200) {
         localStorage.petage = 1;
         document.getElementById("petage").innerHTML = localStorage.petage;
-    }
-    else {
         localStorage.originalunixage = Date.now();
     }
     function feed() {

@@ -29,8 +29,6 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     if (start - localStorage.originalunixage > 259200) {
         localStorage.petage = 1;
         document.getElementById("petage").innerHTML = localStorage.petage;
-    }
-    else {
         localStorage.originalunixage = Date.now();
     }
     function feed() {

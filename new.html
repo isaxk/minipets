@@ -1,12 +1,90 @@
 ---
-permalink: /newpet
 layout: default
-title: New pet
+title: Making new pet...
+permalink: /newpet
 ---
-Create your pet
-<br><br><br>
-<form action="/newpet/submit" method="get">
-    <label>Name</label><input name="name" placeholder="John Doe"/><br>
-    <label>Gender</label><select name="gender" area-placeholder="Select a gender..."><option>Male</option><option>Female</option></select>
-<br><br><br><input type="submit" value="Create" class="btn" style="border: none;">
-</form>
+We're getting <span id="pet-name">your pet</span> ready
+
+<br><br>
+<br><br>
+
+
+<div id="loadingtext">Initializing...</div><br><br>
+<a href="{{'/reveal' |  baseurl }}" class="btn" id="launch-btn" style="display: none; transition: display 1s; width: 200px; margin: auto;">Show me my pet!</a>
+
+
+<script>
+    console.log(localStorage);
+    var checkcount = 0;
+    function check() {
+        if(look == localStorage.petlook) {
+            randomno = Math.floor(Math.random(0) * pets.length);
+            name = pets[randomno].name;
+            look = pets[randomno].look;
+            checkcount++;
+            if(checkcount==50) {
+                name = pets[randomno].name;
+                look = pets[randomno].look;
+                return;
+            }
+            check();
+        }
+        else {
+            return;
+        }
+    }
+    const pets = [
+        {look: 'mr.spike', name: 'Mr. Spike', gender: 'm'},
+        {look: 'mr.blobby', name: 'Mr. Blobby', gender: 'm'},
+        {look: 'tadpole', name: 'Miss. Wiggle', gender: 'f'},
+        
+    ]
+    var randomno = Math.floor(Math.random(0) * pets.length);
+    var name = pets[randomno].name;
+    var look = pets[randomno].look;
+    
+    check();
+    const gender = pets[randomno].gender;
+    localStorage.gotpet = true;
+    localStorage.petname = name;
+    localStorage.petlook = look;
+    localStorage.petgender = gender;
+    localStorage.newpet = true;
+    localStorage.petage = 0;
+    localStorage.feeds = 5;
+    localStorage.bondpoints = 40;
+    localStorage.hunger = 7;
+    console.log(localStorage);
+</script>
+
+<script>
+    window.setTimeout(function() {
+        document.getElementById("launch-btn").style.display = "block";
+    }, 11000, true)
+</script>
+
+<script>
+    const loadingtext = [
+        'Deciding personality',
+        'Setting traits',
+        'Deciding strengths',
+        'Choosing weaknessess'
+    ]
+    var loadingtextbox = document.getElementById("loadingtext");
+    var i = 0;                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        setTimeout(function () {   //  call a 3s setTimeout when the loop is called
+            loadingtextbox.innerHTML = loadingtext[i] + "...";   //  your code here
+            i++;                    //  increment the counter
+            if (i < 5) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }
+            else {
+                loadingtextbox.innerHTML = "Your pet is ready!";
+            }                     //  ..  setTimeout()
+        }, 2000)
+    }
+
+    myLoop();
+</script>
