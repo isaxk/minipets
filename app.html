@@ -51,7 +51,7 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
         document.getElementById("feeds").innerHTML = localStorage.feeds;
         document.getElementById("hunger").innerHTML = localStorage.hunger;
         if (localStorage.hunger == 0) {
-            localStorage.bondpoints = parseInt(localStorage.bondpoints) + 8;
+            localStorage.bondpoints = parseInt(localStorage.bondpoints) + 12;
             document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
         }
     }
