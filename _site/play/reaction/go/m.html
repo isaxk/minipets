@@ -140,7 +140,12 @@ document.getElementById("shape").src = "/assets/img/pets/" + localStorage.petloo
         }
     }
     set();
+if(hunger > 7) {
+        alert("Your pet is too hungry to play more games. Feed your pet!");
+        window.location = "/mypet";
+    }
 </script>
+
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
     </footer>

@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Pet</title>
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-    <script>
-        function newbeez() {
-            if(window.location.pathname == "/") return;
-            if(window.location.pathname == "/newpet") return;
-            if(window.location.pathname == "/share") return;
-            if(localStorage.petname) return;
-            window.location = "/";
-        }
-        newbeez();
-    </script>
-</head>
-<body>
-    <div class="content"><br>
-        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Your Pet</h1>
-        <hr>
-         <div style="font-size: 30px;" id="petname">...</div>
+---
+layout: default
+permalink: /mypet
+title: Your Pet
+---
+<div style="font-size: 30px;" id="petname">...</div>
 <!--Age: <b><span id="petage">...</span></b> <br>-->
 Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br>
 <!--<small>(1 year =
@@ -32,7 +12,7 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
 <img src="about:blank" alt="" id="petimg" width="80%"><br><br>
 <div style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 85px; width: 100%;">
     <button class="btn" onclick="feed();" id="feeds">Feed (0)</button>
-<button class="btn" onclick="window.location= '/play' "> Play </button>
+<button class="btn" onclick="window.location= '{{'/play' |  baseurl }}' "> Play </button>
 <button class="btn" onclick="share();">Share</button><br><br>
 <a href="/guide"  class="btn">Pet Guide</a><br><br>
 <a href="/delete" class="btn">Release into the wild</a>
@@ -40,7 +20,7 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
 
 
 <script>
-    var chomp = new Audio('/chomp.mp3');
+    var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
     localStorage.havepet = true;
     document.getElementById("petname").innerText = localStorage.petname;
     // document.getElementById("petage").innerHTML = localStorage.petage;
@@ -115,11 +95,3 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     }
 
 </script>
-
-         <footer>
-        &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
-    </footer>
-    </div>
-    
-</body>
-</html>
