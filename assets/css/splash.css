@@ -198,14 +198,14 @@ footer {
     height: 160px;
     transition: 1s;
     }
+    .pets, .games {
+        min-height: 300px;
+    }
 }
 @media screen and (max-width: 513px) {
     .pets .item, .games .item {
     height: 79px;
     transition: 1s;
-    }
-    .pets h1, .games h1 {
-        font-size: 27px;
     }
 }
 html {
