@@ -11,7 +11,7 @@ Are you sure you want to release '<span id="petname"></span>' into the wild. You
 <script>
     function release() {
         localStorage.clear();
-        window.location = "/";
+        window.top.location = "/";
     }
     document.getElementById('petname').innerText = localStorage.petname;
 </script>

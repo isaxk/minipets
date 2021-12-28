@@ -36,6 +36,10 @@ permalink: /pet
     audio.play();
     audio.volume = 0.15;
     function reloadit() {
+        console.log(document.getElementById("iframe").contentWindow.location.filename);
+       if(document.getElementById("iframe").contentWindow.location.filename == '/') {
+           window.location = "/";
+       }
        if(localStorage.gotpet) return;
        window.location = "/";
     }
