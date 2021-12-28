@@ -102,6 +102,17 @@
 </footer>
 
 </div>
+<script>
+    function goredirect() {
+        if(localStorage.gotpet) {
+           if(confirm("Would you like to go to your existing pet?")){
+            window.location = "/pet";
+        } 
+        }
+        
+    }
+    goredirect();
+</script>
 
     </main>
 </body>
