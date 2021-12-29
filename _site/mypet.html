@@ -126,15 +126,15 @@
         var canvas = document.getElementById('canvas');
         var dataURL = canvas.toDataURL();
         console.log(dataURL);
-        window.open(dataURL)
         var filesArray =[dataURL]
 
 
         if (navigator.canShare && navigator.canShare({ files: filesArray })) {
             navigator.share({
                 files: filesArray,
-                title: 'Pictures',
-                text: 'Our Pictures.',
+                title: 'I got a new MiniPet!',
+                text: 'Do you like my new pet? I found it using the link below!',
+                url: 'https://minipet.isaboo.co.uk'
             })
                 .then(() => console.log('Share was successful.'))
                 .catch((error) => console.log('Sharing failed', error));
