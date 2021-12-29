@@ -1,21 +1,12 @@
 {
-    "name": "MiniPets",
-    "short_name": "MiniPets",
-    "start_url": "/pet",
-    "scope": "/",
     "background_color": "#ffffff",
-    "theme_color": "ffffff",
-    "icons": [
-        {
-            "src": "/assets/img/favicon.png",
-            "type": "image/png",
-            "sizes": "512x512"
-        },
-        {
-            "src": "/assets/img/favicon-small.png",
-            "type": "image/png",
-            "sizes": "192x192"
-        }
-    ],
-    "display": "standalone"
-}
+    "description": "MiniPet",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "MiniPet",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "MiniPet",
+    "start_url": "/pet",
+    "theme_color": "#ffffff",
+  }
