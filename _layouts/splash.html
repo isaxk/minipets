@@ -28,11 +28,11 @@
 </head>
 <body>
     <header>
-        <img src="/assets/img/favicon.png" alt=""><h1>MiniPets</h1>
+        <a href="/#" style="color:black;"><img src="/assets/img/favicon.png" alt=""><h1>MiniPets</h1></a>
         <nav>
             <ul>
                 <li><a href="/#">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="/#about">About</a></li>
                 <li><a href="https://www.isaboo.co.uk">Creator</a></li>
             </ul>
         </nav>
@@ -40,5 +40,6 @@
     <main>
         {{ content }}
     </main>
+    {% include cookies.html %}
 </body>
 </html>

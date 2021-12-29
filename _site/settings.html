@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,38 +14,38 @@
     <script src="/assets/js/pwa.js"></script>
     <script>
         function newbeez() {
-            if(window.location.pathname == "/") return;
-            if(window.location.pathname == "/newpet") return;
-            if(window.location.pathname == "/share") return;
-            if(localStorage.petname) return;
+            if (window.location.pathname == "/") return;
+            if (window.location.pathname == "/newpet") return;
+            if (window.location.pathname == "/share") return;
+            if (localStorage.petname) return;
             window.location = "/";
         }
         newbeez();
     </script>
     <!-- Matomo -->
-<script>
-    var _paq = window._paq = window._paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="https://minipet.matomo.cloud/";
-      _paq.push(['setTrackerUrl', u+'matomo.php']);
-      _paq.push(['setSiteId', '1']);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.async=true; g.src='//cdn.matomo.cloud/minipet.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-    })();
-  </script>
-  <!-- End Matomo Code -->
-  
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "https://minipet.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = '//cdn.matomo.cloud/minipet.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
 </head>
+
 <body>
 
     </div>
     <div class="content"><br>
         <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Settings</h1>
         <hr>
-         <a href="/pet">&lt; Back</a>
+        <a href="/pet">&lt; Back</a>
 <a onclick="
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -81,10 +82,7 @@ navigator.mediaDevices
 
 
 ">Enable music</a>
-         <footer>
-        &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
-    </footer>
     </div>
-    
 </body>
+
 </html>

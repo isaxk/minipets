@@ -12,9 +12,11 @@
     <script src="https://kit.fontawesome.com/a76afb4366.js" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
         * {
- font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
         html,
         body,
         iframe {
@@ -24,6 +26,7 @@
             overflow: hidden;
             background-color: #d3d3d3;
         }
+
 
         iframe {
             width: 500px;
@@ -100,24 +103,26 @@
         }
 
         .btn {
-            background-color: rgb(36, 104, 231);
+            background-color: rgb(67, 133, 255);
             color: white;
             text-decoration: none;
             padding: 9px;
             font-size: 20px;
             border-radius: 7px;
             transition: .3s;
-            width: 207px;
-            max-width: 207px;
-            min-width: 207px;
-            margin: 50px;
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
         .btn:hover {
-            filter: brightness(110%);
+            background-color: rgb(49, 121, 255);
             transition: .5s;
             cursor: pointer;
+        }
+
+        .menu .footer {
+            position: absolute;
+            bottom: 100px;
+            left: 3px;
         }
     </style>
     <script>
@@ -125,14 +130,14 @@
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
-        (function() {
-          var u="https://minipet.matomo.cloud/";
-          _paq.push(['setTrackerUrl', u+'matomo.php']);
-          _paq.push(['setSiteId', '1']);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.async=true; g.src='//cdn.matomo.cloud/minipet.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        (function () {
+            var u = "https://minipet.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = '//cdn.matomo.cloud/minipet.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
         })();
-      </script>
+    </script>
 </head>
 
 <body>
@@ -148,9 +153,14 @@
         <a href="javascript:iframesrc('/mypet')" class="btn"><i class="fas fa-cat"></i> Go to my pet</a><br><br>
         <a href="/" class="btn"><i class="fas fa-home"></i> Landing Page</a><br><br>
         <a href="javascript:iframesrc('/guide')" class="btn"><i class="fas fa-book"></i> Pet Guide</a><br><br>
-        <a href="javascript:iframesrc('/delete')" class="btn"><i class="fas fa-door-open"></i> Release into the wild</a><br><br><br>
-        <hr/><br><br>
-        <a href="https://github.com/isaboo/minipet-src/issues" class="btn"> <i class="fas fa-bug"></i> Report a bug</a>
+        <a href="javascript:iframesrc('/delete')" class="btn"><i class="fas fa-door-open"></i> Release into the
+            wild</a>
+        <div class="footer">
+            <a href="https://github.com/isaboo/minipet-src/issues" class="btn"> <i class="fas fa-bug"></i> Report a bug</a><br><br>
+            <a href="/legal" class="btn"><i class="fas fa-gavel"></i> Legal Stuff</a><br><br>
+            v1.1.14<br>
+            &copy; isaboo.co.uk 2022.<br>All rights reserved.<br><br>
+        </div>
     </div>
     <div id="dim" onclick="closemenu()">
 
@@ -193,4 +203,42 @@
         document.getElementById('iframe').src = url;
         closemenu();
     }
+    
+</script>
+
+<div id="cookies">
+<h3 style="text-decoration: none; font-weight: lighter;">This website uses cookies to collect anonymous infomation about how our users use the site and so your pet doesn't disappear every time you close the site. <br><br><div style="text-align: center; width: 100%;"><a style="color: white;" href="/privacy" target="_blank">Find out more</a> <a href="javascript:closecookie()" class="btn">Close</a></div></h3>
+</div>
+<style>
+    #cookies {
+        position: fixed;
+bottom: 0px;
+left: 0px;
+width: 100%;
+height: 120px;
+background-color: rgba(0, 68, 255, 0.808);
+color: white;
+display: none;
+    }
+    @media screen and (max-width: 1475px) {
+        #cookies {
+            height: 160px;
+        }
+    }
+    @media screen and (max-width: 1475px) {
+        #cookies h3 {
+            font-size: 15px;
+        }
+    }
+</style>
+<script>
+    function closecookie() {
+        localStorage.cookies = true;
+        document.getElementById("cookies").style.display = "none";
+    }
+    function opencookies() {
+        if(localStorage.cookies) return;
+        document.getElementById("cookies").style.display = "block";
+    }
+    opencookies();
 </script>

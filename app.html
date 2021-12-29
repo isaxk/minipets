@@ -15,9 +15,11 @@ permalink: /pet
     <script src="https://kit.fontawesome.com/a76afb4366.js" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
         * {
- font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
         html,
         body,
         iframe {
@@ -27,6 +29,7 @@ permalink: /pet
             overflow: hidden;
             background-color: #d3d3d3;
         }
+
 
         iframe {
             width: 500px;
@@ -103,24 +106,26 @@ permalink: /pet
         }
 
         .btn {
-            background-color: rgb(36, 104, 231);
+            background-color: rgb(67, 133, 255);
             color: white;
             text-decoration: none;
             padding: 9px;
             font-size: 20px;
             border-radius: 7px;
             transition: .3s;
-            width: 207px;
-            max-width: 207px;
-            min-width: 207px;
-            margin: 50px;
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
         .btn:hover {
-            filter: brightness(110%);
+            background-color: rgb(49, 121, 255);
             transition: .5s;
             cursor: pointer;
+        }
+
+        .menu .footer {
+            position: absolute;
+            bottom: 100px;
+            left: 3px;
         }
     </style>
     <script>
@@ -128,14 +133,14 @@ permalink: /pet
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
-        (function() {
-          var u="https://minipet.matomo.cloud/";
-          _paq.push(['setTrackerUrl', u+'matomo.php']);
-          _paq.push(['setSiteId', '1']);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.async=true; g.src='//cdn.matomo.cloud/minipet.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        (function () {
+            var u = "https://minipet.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = '//cdn.matomo.cloud/minipet.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
         })();
-      </script>
+    </script>
 </head>
 
 <body>
@@ -151,9 +156,14 @@ permalink: /pet
         <a href="javascript:iframesrc('/mypet')" class="btn"><i class="fas fa-cat"></i> Go to my pet</a><br><br>
         <a href="/" class="btn"><i class="fas fa-home"></i> Landing Page</a><br><br>
         <a href="javascript:iframesrc('/guide')" class="btn"><i class="fas fa-book"></i> Pet Guide</a><br><br>
-        <a href="javascript:iframesrc('/delete')" class="btn"><i class="fas fa-door-open"></i> Release into the wild</a><br><br><br>
-        <hr/><br><br>
-        <a href="https://github.com/isaboo/minipet-src/issues" class="btn"> <i class="fas fa-bug"></i> Report a bug</a>
+        <a href="javascript:iframesrc('/delete')" class="btn"><i class="fas fa-door-open"></i> Release into the
+            wild</a>
+        <div class="footer">
+            <a href="https://github.com/isaboo/minipet-src/issues" class="btn"> <i class="fas fa-bug"></i> Report a bug</a><br><br>
+            <a href="/legal" class="btn"><i class="fas fa-gavel"></i> Legal Stuff</a><br><br>
+            v1.1.14<br>
+            &copy; isaboo.co.uk 2022.<br>All rights reserved.<br><br>
+        </div>
     </div>
     <div id="dim" onclick="closemenu()">
 
@@ -196,4 +206,7 @@ permalink: /pet
         document.getElementById('iframe').src = url;
         closemenu();
     }
+    
 </script>
+
+{% include cookies.html %}
