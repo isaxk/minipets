@@ -114,7 +114,7 @@ title: Your Pet
   })
   .then(function(blob) {
 
-    var file = new File([blob], "picture.jpg", {type: 'image/jpeg'});
+    var file = new File([blob], dataURL, {type: 'image/png'});
     var filesArray = [file];
 
     if(navigator.canShare && navigator.canShare({ files: filesArray })) {
