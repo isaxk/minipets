@@ -71,16 +71,7 @@ button {
 }
 
 @media screen and (max-width: 360px) {
-    .btns {
-        width: 200px;
-    }
-
-    .btns .btn {
-        align-self: center;
-        float: left;
-        clear: both;
-        text-align: center;
-        margin: 5px;
-        width: 150px;
+    .btn {
+        font-size: 15px;
     }
 }
