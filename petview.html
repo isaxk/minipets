@@ -108,25 +108,7 @@ title: Your Pet
         var filesArray = [dataURL]
 
 
-        fetch(dataURL)
-            .then(function (response) {
-                return response.blob()
-            })
-            .then(function (blob) {
-
-                var file = new File([blob], dataURL, { type: 'image/png' });
-                var filesArray = [file];
-
-                if (navigator.canShare && navigator.canShare({ files: filesArray })) {
-                    navigator.share({
-                        text: 'I got a new pet! I found it on MiniPets. Make your own using the link below',
-                        files: filesArray,
-                        title: 'I got a MiniPet!',
-                        url: 'https://minipet.isaboo.co.uk'
-                    });
-                }
-            }
-            )
+        navigator.share(shareData);
 
     }
     loadcanvas();
