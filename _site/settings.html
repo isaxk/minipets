@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="/assets/js/html2canvas.min.js"></script>
+    <script>
+        function newbeez() {
+            if(window.location.pathname == "/") return;
+            if(window.location.pathname == "/newpet") return;
+            if(window.location.pathname == "/share") return;
+            if(localStorage.petname) return;
+            window.location = "/";
+        }
+        newbeez();
+    </script>
+</head>
+<body>
+    <div class="content"><br>
+        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Settings</h1>
+        <hr>
+         <a href="/pet">&lt; Back</a>
+<a onclick="
+
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+navigator.mediaDevices
+    .getUserMedia({ audio: true })
+    .then(() => {
+        const source = audioContext.createBufferSource();
+        source.addEventListener('ended', () => {
+            source.stop();
+            audioContext.close();
+        });
+
+        const request = new XMLHttpRequest();
+
+        request.open('GET', '/path-to-sound.mp3', true);
+        request.responseType = 'arraybuffer';
+        request.onload = () => {
+            audioContext.decodeAudioData(
+                request.response,
+                (buffer) => {
+                    source.buffer = buffer;
+                    source.connect(audioContext.destination);
+                    source.start();
+                },
+                (e) => {
+                    console.log('Error with decoding audio data' + e.message);
+                });
+        }
+
+        request.send();
+    })
+    .catch(reason => console.error(`Audio permissions denied: ${reason}`));
+
+
+">Enable music</a>
+         <footer>
+        &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
+    </footer>
+    </div>
+    
+</body>
+</html>

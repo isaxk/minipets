@@ -1,0 +1,42 @@
+---
+layout: default
+permalink: /settings
+title: Settings
+---
+<a href="/pet">&lt; Back</a>
+<a onclick="
+
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+navigator.mediaDevices
+    .getUserMedia({ audio: true })
+    .then(() => {
+        const source = audioContext.createBufferSource();
+        source.addEventListener('ended', () => {
+            source.stop();
+            audioContext.close();
+        });
+
+        const request = new XMLHttpRequest();
+
+        request.open('GET', '/path-to-sound.mp3', true);
+        request.responseType = 'arraybuffer';
+        request.onload = () => {
+            audioContext.decodeAudioData(
+                request.response,
+                (buffer) => {
+                    source.buffer = buffer;
+                    source.connect(audioContext.destination);
+                    source.start();
+                },
+                (e) => {
+                    console.log('Error with decoding audio data' + e.message);
+                });
+        }
+
+        request.send();
+    })
+    .catch(reason => console.error(`Audio permissions denied: ${reason}`));
+
+
+">Enable music</a>

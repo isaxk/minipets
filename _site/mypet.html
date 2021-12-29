@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="/assets/js/html2canvas.min.js"></script>
     <script>
         function newbeez() {
             if(window.location.pathname == "/") return;
@@ -23,23 +24,29 @@
     <div class="content"><br>
         <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Your Pet</h1>
         <hr>
-         <div style="font-size: 30px;" id="petname">...</div>
-<!--Age: <b><span id="petage">...</span></b> <br>-->
-Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br>
-<!--<small>(1 year =
+         <div id="toshare">
+
+
+    <div style="font-size: 30px;" id="petname">...</div>
+    <!--Age: <b><span id="petage">...</span></b> <br>-->
+    Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br>
+    <!--<small>(1 year =
     3 real days)</small><br>-->
 
-<img src="about:blank" alt="" id="petimg" width="80%"><br><br>
-<div style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 85px; width: 100%;">
+    <img src="about:blank" alt="" id="petimg" width="80%"><br><br>
+</div>
+<div style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 85px; width: 100%;"
+    onclick="loadcanvas();">
     <button class="btn" onclick="feed();" id="feeds">Feed (0)</button>
-<button class="btn" onclick="window.location= '/play' "> Play </button>
-<button class="btn" onclick="share();">Share</button><br><br>
-<a href="/guide"  class="btn">Pet Guide</a><br><br>
-<a href="/delete" class="btn">Release into the wild</a>
+    <button class="btn" onclick="window.location= '/play' "> Play </button>
+    <button class="btn" onclick="share();">Share</button><br><br>
+    <a href="/guide" class="btn">Pet Guide</a><br><br>
+    <a href="/delete" class="btn">Release into the wild</a>
 </div>
 
 
 <script>
+
     var chomp = new Audio('/chomp.mp3');
     localStorage.havepet = true;
     document.getElementById("petname").innerText = localStorage.petname;
@@ -56,6 +63,14 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
         // document.getElementById("petage").innerHTML = localStorage.petage;
         localStorage.originalunixage = Date.now();
     }
+    function loadcanvas() {
+        html2canvas(document.querySelector("#toshare")).then(canvas => {
+            canvas.id = "canvas";
+            canvas.style.display = "none";
+            document.body.appendChild(canvas);
+        });
+    }
+
     function feed() {
         if (localStorage.hunger == 0) {
             alert("Your pet is full up and doesn't require food.")
@@ -107,15 +122,33 @@ Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hung
     // Share must be triggered by "user activation"
 
     function share() {
-        navigator.share(shareData);
+
+        var canvas = document.getElementById('canvas');
+        var dataURL = canvas.toDataURL();
+        console.log(dataURL);
+        window.open(dataURL)
+        var filesArray =[dataURL]
+
+
+        if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+            navigator.share({
+                files: filesArray,
+                title: 'Pictures',
+                text: 'Our Pictures.',
+            })
+                .then(() => console.log('Share was successful.'))
+                .catch((error) => console.log('Sharing failed', error));
+        } else {
+            console.log(`Your system doesn't support sharing files.`);
+        }
+
     }
 
     function help() {
         alert("Pet Guide:\n\n-Hunger-:\nWhen you get to zero feeds, if you click it will give you 5 feeds and feed your pet (sum of 4), but will cost 10 bond points. If hunger reaches 10 you will lose 25 bond points!\n\n-Play-:\nPlaying a game gives you 7-25 bond points but costs 2 hunger.")
     }
-
+    loadcanvas();
 </script>
-
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
     </footer>
