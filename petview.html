@@ -29,7 +29,7 @@ title: Your Pet
     localStorage.havepet = true;
     document.getElementById("petname").innerText = localStorage.petname;
     // document.getElementById("petage").innerHTML = localStorage.petage;
-    document.getElementById("feeds").innerHTML = "<i class='fas fa-carrot'></i> Feed (" + localStorage.feeds + ")";
+    document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
     if (localStorage.feeds == 0) {
         document.getElementById("feeds").innerHTML = " Buy Feeds";
     }
