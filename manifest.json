@@ -8,5 +8,5 @@
     "scope": "/",
     "short_name": "MiniPet",
     "start_url": "/pet",
-    "theme_color": "#ffffff",
+    "theme_color": "#ffffff"
   }
