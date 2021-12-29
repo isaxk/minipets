@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="/assets/js/html2canvas.min.js"></script>
     <script src="https://kit.fontawesome.com/a76afb4366.js" crossorigin="anonymous"></script>
-    <link rel="manifest" href="/manifest.json">
     <script src="/assets/js/pwa.js"></script>
     <script>
         function newbeez() {
@@ -58,9 +57,9 @@
 </div>
 <div style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 85px; width: 100%;"
     onclick="loadcanvas();">
-    <button class="btn" onclick="feed();" id="feeds">Feed (0)</button>
-    <button class="btn" onclick="window.location= '/play' "> Play </button>
-    <button class="btn" onclick="share();">Share</button>
+    <a class="btn" onclick="feed();" id="feeds"><i class="fas fa-carrot"></i> Feed (0)</a>
+    <a class="btn" onclick="window.location= '/play' "><i class="fas fa-gamepad"></i> Games</a>
+    <a class="btn" onclick="share();"><i class="fas fa-share-alt-square"></i> Share</a>
 </div>
 
 
@@ -70,9 +69,9 @@
     localStorage.havepet = true;
     document.getElementById("petname").innerText = localStorage.petname;
     // document.getElementById("petage").innerHTML = localStorage.petage;
-    document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
+    document.getElementById("feeds").innerHTML = "<i class='fas fa-carrot'></i> Feed (" + localStorage.feeds + ")";
     if (localStorage.feeds == 0) {
-        document.getElementById("feeds").innerHTML = "Buy Feeds";
+        document.getElementById("feeds").innerHTML = "<i class='fas fa-coins'></i> Buy Feeds";
     }
     document.getElementById("hunger").innerHTML = localStorage.hunger;
     document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;

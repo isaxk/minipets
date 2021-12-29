@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play with my pet</title>
+    <title>TicTacToe</title>
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
@@ -42,19 +42,27 @@
 
     </div>
     <div class="content"><br>
-        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Play with my pet</h1>
+        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">TicTacToe</h1>
         <hr>
-         <a href="/mypet" style="text-align: left;">&lt; Back</a>
-<br><br><br>
-<a href="/play/reaction" class="btn">Reactions</a>
-<a href="/play/tictactoe" class="btn">TicTacToe</a>
-
-<script>
-    if(localStorage.hunger > 7) {
-        alert("Your pet is too hungry to play any games.\n\n\n*Feed your pet!*");
-        window.location = "/mypet";
-    }
-</script>
+         <a href="/play" class="btn" style="color: white;">&lt; back</a>
+</body>
+<head>
+<link type="text/css" rel="stylesheet" href="/games/tictactoe/style.css" />
+<script type="text/javascript" src="/games/tictactoe/script.js"></script>
+</head>
+<body>
+    <br />
+			<p id="message" style="font-family: 'Poppins';"></p>
+			<br />
+		<table id="tab-tic-tac-toe" cellspacing="0">
+			<tr><td id="00" onclick="clickedCell(this)"></td><td id="01" onclick="clickedCell(this)"></td><td id="02" onclick="clickedCell(this)"></td></tr>
+			<tr><td id="10" onclick="clickedCell(this)"></td><td id="11" onclick="clickedCell(this)"></td><td id="12" onclick="clickedCell(this)"></td></tr>
+			<tr><td id="20" onclick="clickedCell(this)"></td><td id="21" onclick="clickedCell(this)"></td><td id="22" onclick="clickedCell(this)"></td></tr>
+		</table>
+		<br><br>
+		<input type="button" value="Start AI" id="bnt-restart" onclick="restartBnt(this)" class="btn"/>
+		<br />
+		<a href="https://github.com/Cledersonbc/tic-tac-toe-minimax">Original Source</a>
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
     </footer>

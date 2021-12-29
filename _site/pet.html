@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
     <script src="/assets/js/pwa.js"></script>
     <title>MiniPet</title>
     <script src="https://kit.fontawesome.com/a76afb4366.js" crossorigin="anonymous"></script>
@@ -144,9 +145,12 @@
         <i id="toggle" class="fas fa-bars"></i>
     </div>
     <div id="menu" class="menu">
-        <a href="/" class="btn">Landing Page</a><br><br>
-        <a href="javascript:iframesrc('/guide')" class="btn">Pet Guide</a><br><br>
-        <a href="javascript:iframesrc('/delete')" class="btn">Release into the wild</a>
+        <a href="javascript:iframesrc('/mypet')" class="btn"><i class="fas fa-cat"></i> Go to my pet</a><br><br>
+        <a href="/" class="btn"><i class="fas fa-home"></i> Landing Page</a><br><br>
+        <a href="javascript:iframesrc('/guide')" class="btn"><i class="fas fa-book"></i> Pet Guide</a><br><br>
+        <a href="javascript:iframesrc('/delete')" class="btn"><i class="fas fa-door-open"></i> Release into the wild</a><br><br><br>
+        <hr/><br><br>
+        <a href="https://github.com/isaboo/minipet-src/issues" class="btn"> <i class="fas fa-bug"></i> Report a bug</a>
     </div>
     <div id="dim" onclick="closemenu()">
 
