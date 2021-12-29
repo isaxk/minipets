@@ -9,7 +9,7 @@ title: MiniPets
     <div class="hero-txt">
     <h1>MiniPets</h1>
 <p>Create a pet. Feed it, play with it,<br> bond with it and show it off to your friend.</p>
-<a href="/newpet" class="btn">Get a pet today!</a>
+<a href="/newpet" class="btn"id="go">Get a pet today!</a>
 <a href="#about" class="btn">Find out more</a>
 </div>
 </div></div>
@@ -88,11 +88,11 @@ title: MiniPets
 <script>
     function goredirect() {
         if(localStorage.gotpet) {
-           if(confirm("Would you like to go to your existing pet?")){
-            window.location = "/pet";
+          var go = document.getElementById("go");
+          go.innerText = "Go to my pet";
+          go.href = "/pet";
         } 
         }
         
-    }
     goredirect();
 </script>

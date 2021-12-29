@@ -17,7 +17,7 @@ html, body {
     background-color: white;
 }
 .content {
-    width: 500px;
+    width: 600px;
     max-width: 100%;
     margin: 0px auto;
     background-color: white;
@@ -58,4 +58,3 @@ a {
 button {
     border: none;
 }
-
