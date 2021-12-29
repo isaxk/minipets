@@ -3,7 +3,8 @@
     "short_name": "MiniPets",
     "start_url": "/pet",
     "scope": "/",
-    "background_color": "#fff",
+    "background_color": "#ffffff",
+    "theme_color": "ffffff",
     "icons": [
         {
             "src": "/assets/img/favicon.png",

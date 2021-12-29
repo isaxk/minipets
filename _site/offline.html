@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Release into the wild</title>
+    <title>Your Offline!</title>
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
@@ -42,20 +42,9 @@
 
     </div>
     <div class="content"><br>
-        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Release into the wild</h1>
+        <h1><img src="/assets/img/favicon.png" height="50px" style="transform: translateY(15px);">Your Offline!</h1>
         <hr>
-         Are you sure you want to release '<span id="petname"></span>' into the wild. You may never see them again?
-<br><br><br>
-<button class="btn" onclick="release()">OK</button>
-<a href="/mypet" class="btn">Cancel</a>
-
-<script>
-    function release() {
-        localStorage.clear();
-        window.top.location = "/";
-    }
-    document.getElementById('petname').innerText = localStorage.petname;
-</script>
+         <br><br>Please reconnect to see your pet!
          <footer>
         &copy; isaboo.co.uk 2022. All rights reserved.<br><br>
     </footer>
