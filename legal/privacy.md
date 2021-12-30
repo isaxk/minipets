@@ -2,6 +2,7 @@
 layout: text
 title: Privacy Policy
 permalink: /privacy
+short: true
 ---
 Whilst using this website you agree to the following:
 

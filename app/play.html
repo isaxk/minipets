@@ -1,0 +1,37 @@
+---
+layout: default
+title: Play with my pet
+permalink: /play
+---
+<a href="/mypet" style="text-align: left;">&lt; Back</a>
+<br><br><br>
+
+Unlocked:<br><br>
+<a href="{{'/play/tictactoe' |  baseurl }}" class="btn">TicTacToe</a>
+
+<div id="lv1"><br><br>55 Bond Points Required:<br><br></div>
+<a id='reactions' href="{{'/play/reaction' |  baseurl }}" onclick="return checkpoints(65)" class="btn inactive">Reactions</a>
+
+<div id="lv2"><br><br>90 Bond Points Required:<br><br></div>
+<a id="petrun" href="/play/petrun" onclick="return checkpoints(90)" class="btn inactive">Pet Run</a>
+
+<script>
+    if(localStorage.hunger > 7) {
+        alert("Your pet is too hungry to play any games.\n\n\n*Feed your pet!*");
+        window.location = "/mypet";
+    }
+    function checkpoints(points) {
+        if(parseInt(localStorage.bondpoints) < points) {
+            customalert("Play the available games to earn bond points. Then you can play this game.")
+            return false;
+        }
+    }
+    if(localStorage.bondpoints >= 55) {
+        document.getElementById("lv1").style.display = "none";
+        document.getElementById("reactions").classList = "btn";
+    }
+    if(localStorage.bondpoints >= 90) {
+        document.getElementById("lv2").style.display = "none";
+        document.getElementById("petrun").classList = "btn";
+    }
+</script>

@@ -29,17 +29,6 @@ p {
 	display: block;
 }
 
-a {
-	color: #00AEEA;
-	text-decoration: none;
-}
-a:hover {
-	color: #00AEEA;
-}
-a:visited {
-	color: #00AEEA;
-}
-
 /* ****************** Table style ****************** */
 #tab-tic-tac-toe {
 	margin-left: auto;
@@ -85,29 +74,3 @@ a:visited {
 }
 
 /* ****************** Restart Button ****************** */
-#bnt-restart {
-	display: block;
-	padding: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 200px;
-	background: #00AEEA;
-	font-size: 1.5em;
-	color: #FFF;
-	border: none;
-	border-radius: 6px;
-	cursor: pointer;
-}
-
-#bnt-restart:hover {
-	background: #1DC5FF;
-}
-
-#bnt-restart:active {
-	background: #0787B3;
-}
-
-#bnt-restart:disabled {
-	color: #444;
-	background: #CECECE;
-}

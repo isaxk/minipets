@@ -2,6 +2,7 @@
 layout: text
 title: Open Source Licenses
 permalink: /open-source
+short: true
 ---
 
 <div style="text-align: center;">

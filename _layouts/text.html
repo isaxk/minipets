@@ -1,11 +1,22 @@
 ---
 layout: splash
 ---
-<div id="about" style="min-width: 85%;">
+<div style="">
+    <div id="about" style="height: 100%; position: static;">
     <h1>{{page.title}}</h1>
        {{content}} 
        
 </div>
 <footer>
         &copy; isaboo.co.uk 2021. All rights reserved. <a href="/legal">Legal Stuff</a>
-    </footer>
+</footer>
+</div>
+{% if page.short == true %} 
+<style>
+    footer {
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+{% endif %}
+

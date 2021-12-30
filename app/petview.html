@@ -1,0 +1,121 @@
+---
+layout: default
+permalink: /mypet
+title: Your Pet
+---
+
+<div id="toshare">
+
+
+    <div style="font-size: 30px;" id="petname">...</div>
+    <!--Age: <b><span id="petage">...</span></b> <br>-->
+    Bond Points: <b><span id="bondpoints">40</span><br></b>Hunger: <b><span id="hunger">7</span></b><br><br>
+    <!--<small>(1 year =
+    3 real days)</small><br>-->
+
+    <img src="about:blank" alt="" id="petimg" width="80%"><br><br>
+</div>
+<div class="btns"
+    onclick="loadcanvas();">
+    <a class="btn" onclick="feed();"><i class="fas fa-carrot"></i> <span id="feeds">Feed (0)</span></a>
+    <a class="btn" onclick="play();"><i class="fas fa-gamepad"></i> Games</a>
+    <a class="btn" onclick="share();"><i class="fas fa-share-alt-square"></i> Share</a>
+</div>
+
+
+<script>
+
+    var chomp = new Audio('{{"/chomp.mp3" |  baseurl }}');
+    localStorage.havepet = true;
+    document.getElementById("petname").innerText = localStorage.petname;
+    // document.getElementById("petage").innerHTML = localStorage.petage;
+    document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
+    if (localStorage.feeds == 0) {
+        document.getElementById("feeds").innerHTML = " Buy Feeds";
+    }
+    document.getElementById("hunger").innerHTML = localStorage.hunger;
+    document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
+    const start = Date.now();
+    if (start - localStorage.originalunixage > 259200) {
+        localStorage.petage = 1;
+        // document.getElementById("petage").innerHTML = localStorage.petage;
+        localStorage.originalunixage = Date.now();
+    }
+    function loadcanvas() {
+        html2canvas(document.querySelector("#toshare")).then(canvas => {
+            canvas.id = "canvas";
+            canvas.style.display = "none";
+            document.body.appendChild(canvas);
+        });
+    }
+
+    function feed() {
+        if (localStorage.hunger == 0) {
+            customalert("Your pet is full up and doesn't require food.")
+            return;
+
+        }
+        if (localStorage.feeds == 0) {
+
+            if (bondpoints < 8) {
+                customalert("Can't afford feeds. 8 bond points required.")
+                return;
+            }
+            if (confirm("This will cost 8 bond points and give you 5 feeds. Would you like to continue?")) {
+                localStorage.bondpoints = parseInt(localStorage.bondpoints) - 8;
+                localStorage.feeds = parseInt(localStorage.feeds) + 5;
+                document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
+                document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
+                return;
+            }
+            else {
+                return;
+            }
+
+
+
+        }
+        chomp.play();
+        localStorage.feeds = localStorage.feeds - 1;
+        localStorage.hunger = localStorage.hunger - 1;
+        document.getElementById("feeds").innerHTML = "Feed (" + localStorage.feeds + ")";
+        document.getElementById("hunger").innerHTML = localStorage.hunger;
+        if (localStorage.hunger == 0) {
+            localStorage.bondpoints = parseInt(localStorage.bondpoints) + 5;
+            document.getElementById("bondpoints").innerHTML = localStorage.bondpoints;
+        }
+        if (localStorage.feeds == 0) {
+            document.getElementById("feeds").innerHTML = "Buy feeds";
+        }
+    }
+    document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0" + ".png";
+    console.log(start);
+
+    const shareData = {
+        title: 'I got a new pet!',
+        text: 'I got a new pet on \'MiniPet\' by isaboo.co.uk. Click on the link to see what I got and make your own!',
+        url: 'https://minipet.isaboo.co.uk/share?n=' + localStorage.petname + '&l=' + localStorage.petlook + '/0&g=' + localStorage.petgender + '&b=' + localStorage.bondpoints
+    }
+
+    // Share must be triggered by "user activation"
+
+    function share() {
+
+        var canvas = document.getElementById('canvas');
+        var dataURL = canvas.toDataURL();
+        console.log(dataURL);
+        var filesArray = [dataURL]
+
+
+        navigator.share(shareData);
+
+    }
+    loadcanvas();
+    function play() {
+        if(localStorage.hunger>7){
+            customalert("Your pet is too hungry to play games.<br><br><br><b>Feed your pet</b>")
+            return;
+        }
+        window.location = "/play";
+    }
+</script>
