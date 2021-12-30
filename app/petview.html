@@ -118,4 +118,10 @@ title: Your Pet
         }
         window.location = "/play";
     }
+    function updatechecker() {
+        if(localStorage.v1_2) return;
+        customalert("<h2>Welcome to version 1.2!</h2><br>What's new?:<br><ul><li>Improved design</li><li>New games</li><li>Game unlocking</li></ul>Hope you like the new update!")
+        localStorage.v1_2 = true;
+    }
+    updatechecker();
 </script>
