@@ -18,7 +18,7 @@ ogdesc: Click here to see what pet I got and to see if you get the same one.
 
     <h3 style="font-style: normal;"><span id="pronoun">Their</span> name is <b id="petname"></b>. And we have <span id="points"></span> bond points.</h3>
     <img src="" width="100%" id="petimg"><br><br><br>
-    <a href="/" class="btn">Get your own pet here!</a>
+    <a href="{{ site.baseurl }}/" class="btn">Get your own pet here!</a>
     <script>
         const queryString = window.location.search;
         console.log(queryString);
@@ -36,5 +36,5 @@ ogdesc: Click here to see what pet I got and to see if you get the same one.
         }
         document.getElementById("petname").innerText = name;
         document.getElementById("points").innerText = points;
-        document.getElementById("petimg").src = "/assets/img/pets/" + look + ".png";
+        document.getElementById("petimg").src = "{{ site.baseurl }}/assets/img/pets/" + look + ".png";
     </script>
