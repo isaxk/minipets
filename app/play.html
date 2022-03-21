@@ -13,12 +13,12 @@ Unlocked:<br><br>
 <a id='reactions' href="{{'/play/reaction' |  baseurl }}" onclick="return checkpoints(85)" class="btn inactive">Reactions</a>
 
 <div id="lv2"><br><br>145 Bond Points Required:<br><br></div>
-<a id="petrun" href="/play/petrun" onclick="return checkpoints(145)" class="btn inactive">Pet Run</a>
+<a id="petrun" href="{{ site.baseurl }}/play/petrun" onclick="return checkpoints(145)" class="btn inactive">Pet Run</a>
 
 <script>
     if(localStorage.hunger > 7) {
         alert("Your pet is too hungry to play any games.\n\n\n*Feed your pet!*");
-        window.location = "/mypet";
+        window.location = "{{ site.baseurl }}/mypet";
     }
     function checkpoints(points) {
         if(parseInt(localStorage.bondpoints) < points) {
