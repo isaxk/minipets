@@ -219,8 +219,8 @@ var canvas = document.getElementById("canvas");
         }
         if(localStorage.hunger > 7) {
             alert("Your pet is too hungry to play more games!");
-            window.location = "/mypet";
+            window.location = "{{ site.baseurl }}/mypet";
         }
         var player_img = new Image();
-        player_img.src = "/assets/img/pets/"+localStorage.petlook+"/0.png";
+        player_img.src = "{{ site.baseurl }}/assets/img/pets/"+localStorage.petlook+"/0.png";
         load();
