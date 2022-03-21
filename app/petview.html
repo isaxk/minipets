@@ -94,7 +94,7 @@ title: Your Pet
     const shareData = {
         title: 'I got a new pet!',
         text: 'I got a new pet on \'MiniPet\' by isaboo.co.uk. Click on the link to see what I got and make your own!',
-        url: 'https://minipet.isaboo.co.uk/share?n=' + localStorage.petname + '&l=' + localStorage.petlook + '/0&g=' + localStorage.petgender + '&b=' + localStorage.bondpoints
+        url: 'https://www.isaacdoescodes.com/minipet/share?n=' + localStorage.petname + '&l=' + localStorage.petlook + '/0&g=' + localStorage.petgender + '&b=' + localStorage.bondpoints
     }
 
     // Share must be triggered by "user activation"
@@ -116,12 +116,6 @@ title: Your Pet
             customalert("Your pet is too hungry to play games.<br><br><br><b>Feed your pet</b>")
             return;
         }
-        window.location = "/play";
+        window.location = "{{ site.baseurl }}/play";
     }
-    function updatechecker() {
-        if(localStorage.updatetwo == true) return;
-        customalert("<h2>Welcome to version 1.2!</h2><br>What's new?:<br><ul><li>Improved design</li><li>New games</li><li>Game unlocking</li></ul>Hope you like the new update!")
-        localStorage.updatetwo = true;
-    }
-    updatechecker();
 </script>
