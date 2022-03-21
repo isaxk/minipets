@@ -17,8 +17,8 @@ permalink: /play/reaction/go
 <div id="hunger"></div><br><br>
 <div id="btns" style="display: none;">
     <a href="" class="btn">Play again</a>
-    <a href="/mypet" class="btn">Go back to my pet</a>
-    <a href="/play" class="btn">Play more games</a>
+    <a href="{{ site.baseurl }}/mypet" class="btn">Go back to my pet</a>
+    <a href="{{ site.baseurl }}/play" class="btn">Play more games</a>
 </div>
 <img src="" id="shape">
 <script type="text/javascript">
@@ -124,6 +124,6 @@ permalink: /play/reaction/go
         }
     if(hunger > 7) {
         alert("Your pet is too hungry to play more games. Feed your pet!");
-        window.location = "/mypet";
+        window.location = "{{ site.baseurl }}/mypet";
     }
 </script>
