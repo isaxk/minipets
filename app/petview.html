@@ -88,7 +88,7 @@ title: Your Pet
             document.getElementById("feeds").innerHTML = "Buy feeds";
         }
     }
-    document.getElementById("petimg").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0" + ".png";
+    document.getElementById("petimg").src = "{{ site.baseurl }}/assets/img/pets/" + localStorage.petlook + "/" + "0" + ".png";
     console.log(start);
 
     const shareData = {
