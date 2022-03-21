@@ -6,14 +6,14 @@ title: Release into the wild
 Are you sure you want to release '<span id="petname"></span>' into the wild. You may never see them again?
 <br><br><br>
 <button class="btn" onclick="release()">OK</button>
-<a href="/mypet" class="btn">Cancel</a>
+<a href="{{ site.baseurl }}/pet" class="btn">Cancel</a>
 
 <script>
     function release() {
         localStorage.clear();
         localStorage.cookies = true;
         localStorage.v1_2 = true;
-        window.top.location = "/";
+        window.top.location = "{{ site.baseurl }}/";
     }
     document.getElementById('petname').innerText = localStorage.petname;
 </script>
