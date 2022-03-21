@@ -17,12 +17,12 @@ permalink: /play/reaction/go/m
 <div id="hunger"></div><br><br>
 <div id="btns" style="display: none;">
     <a href="" class="btn">Play again</a><br><br>
-    <a href="/mypet" class="btn">Back to my pet</a><br><br>
-    <a href="/play" class="btn">More games</a>
+    <a href="{{ site.baseurl }}/mypet" class="btn">Back to my pet</a><br><br>
+    <a href="{{ site.baseurl }}/play" class="btn">More games</a>
 </div>
 <img src="" id="shape">
 <script type="text/javascript">
-document.getElementById("shape").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0.png";
+document.getElementById("shape").src = "{{ site.baseurl }}/assets/img/pets/" + localStorage.petlook + "/" + "0.png";
     var count = 0;
     var avrg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var start = new Date().getTime();
@@ -122,6 +122,6 @@ document.getElementById("shape").src = "/assets/img/pets/" + localStorage.petloo
     set();
 if(hunger > 7) {
         alert("Your pet is too hungry to play more games. Feed your pet!");
-        window.location = "/mypet";
+        window.location = "{{ site.baseurl }}/mypet";
     }
 </script>
