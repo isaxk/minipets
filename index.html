@@ -9,7 +9,7 @@ title: MiniPets
     <div class="hero-txt">
     <h1>MiniPets</h1>
 <p>Create a pet. Feed it, play with it,<br> bond with it and show it off to your friend.</p>
-<a href="/newpet" class="btn"id="go">Get a pet today!</a>
+<a href="{{ site.baseurl }}/newpet" class="btn"id="go">Get a pet today!</a>
 <a href="#about" class="btn">Find out more</a>
 </div>
 </div></div>
@@ -20,19 +20,19 @@ title: MiniPets
     </h1>
     <p>
         <div class="item">
-            <img src="/assets/img/pets/tadpole/0.png" alt="">
+            <img src="{{ site.baseurl }}/assets/img/pets/tadpole/0.png" alt="">
         </div>
         <div class="item">
-            <img src="/assets/img/pets/blob/0.png" alt="">
+            <img src="{{ site.baseurl }}/assets/img/pets/blob/0.png" alt="">
         </div>
         <div class="item">
-            <img src="/assets/img/pets/spike/0.png" alt="">
+            <img src="{{ site.baseurl }}/assets/img/pets/spike/0.png" alt="">
         </div>
         <div class="item">
-            <img src="/assets/img/pets/stick/0.png" alt="">
+            <img src="{{ site.baseurl }}/assets/img/pets/stick/0.png" alt="">
         </div>
         <div class="item">
-            <img src="/assets/img/pets/swirl/0.png" alt="">
+            <img src="{{ site.baseurl }}/assets/img/pets/swirl/0.png" alt="">
         </div>
         
     </p>
@@ -44,10 +44,10 @@ title: MiniPets
         Play games with your pet...
     </h1>
     <div class="item">
-        <img src="/assets/img/reaction.gif" alt="">
+        <img src="{{ site.baseurl }}/assets/img/reaction.gif" alt="">
     </div>
     <div class="item">
-        <img src="/assets/img/tictactoe.gif" alt="">
+        <img src="{{ site.baseurl }}/assets/img/tictactoe.gif" alt="">
     </div>
     <div class="item">
         Coming soon...
@@ -81,7 +81,7 @@ title: MiniPets
     </p>
 </div><br><br><br><br>
 <footer>
-    &copy; isaboo.co.uk 2021. All rights reserved. <a href="/legal">Legal Stuff</a>
+    &copy; isaboo.co.uk 2021. All rights reserved. <a href="{{ site.baseurl }}/legal">Legal Stuff</a>
 </footer>
 
 </div>
@@ -90,7 +90,7 @@ title: MiniPets
         if(localStorage.gotpet) {
           var go = document.getElementById("go");
           go.innerText = "Go to my pet";
-          go.href = "/pet";
+          go.href = "{{ site.baseurl }}/pet";
         } 
         }
         
