@@ -22,7 +22,7 @@ permalink: /play/reaction/go
 </div>
 <img src="" id="shape">
 <script type="text/javascript">
-    document.getElementById("shape").src = "/assets/img/pets/" + localStorage.petlook + "/" + "0.png";
+    document.getElementById("shape").src = "{{ site.baseurl }}/assets/img/pets/" + localStorage.petlook + "/" + "0.png";
     var count = 0;
     var avrg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var start = new Date().getTime();
