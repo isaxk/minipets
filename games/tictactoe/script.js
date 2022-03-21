@@ -223,7 +223,7 @@ function clickedCell(cell) {
 function restartBnt(button) {
 	if (parseInt(localStorage.hunger) > 6) {
 		alert("You pet is too hungry to play games. Feed your pet!");
-		window.location = "/mypet";
+		window.location = "{{ site.baseurl }}/mypet";
 	}
 	if (button.value == "Start AI") {
 		aiTurn();
