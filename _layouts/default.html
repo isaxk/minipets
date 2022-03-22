@@ -15,11 +15,11 @@
     <script src="{{ site.baseurl }}/assets/js/alert-box.js"></script>
     <script>
         function newbeez() {
-            if (window.location.pathname == "/") return;
-            if (window.location.pathname == "/newpet") return;
-            if (window.location.pathname == "/share") return;
+            if (window.location.pathname == "{{site.baseurl}}/") return;
+            if (window.location.pathname == "{{site.baseurl}}/newpet") return;
+            if (window.location.pathname == "{{site.baseurl}}/share") return;
             if (localStorage.petname) return;
-            window.location = "/";
+            window.location = "{{site.baseurl}}/";
         }
         newbeez();
     </script>
