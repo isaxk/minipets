@@ -73,7 +73,14 @@ document.getElementById("shape").src = "{{ site.baseurl }}/assets/img/pets/" + l
                 bondpoints+=6;
             }
             bondpoints+=7;
-            document.getElementById("timeTaken").innerHTML = "You got an average time of: " + average + "s";
+            window.setTimeout(endscore, 1000);
+        }
+        count++;
+        appearAfterDelay();
+
+    }
+    function endscore() {
+        document.getElementById("timeTaken").innerHTML = "You got an average time of: " + average + "s";
             document.getElementById("bondPoints").innerHTML = "And earned: " + bondpoints + " Bond Points!";
             document.getElementById("hunger").innerHTML = "But your pet got 2 Hunger!";
             document.getElementById("btns").style.display = "block";
@@ -83,12 +90,7 @@ document.getElementById("shape").src = "{{ site.baseurl }}/assets/img/pets/" + l
                 localStorage.bondpoints==parseInt(localStorage.bondpoints) - 5;
             }
             return;
-        }
-        count++;
-        appearAfterDelay();
-
-    }
-
+}
     function share(score) {
         const shareData = {
             title: "Can you beat my reation tester score?",
