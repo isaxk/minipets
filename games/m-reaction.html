@@ -76,8 +76,10 @@ document.getElementById("shape").src = "{{ site.baseurl }}/assets/img/pets/" + l
             window.setTimeout(endscore, 800);
             return;
         }
-        count++;
-        appearAfterDelay();
+        else {
+            count++;
+            appearAfterDelay();
+        }
 
     }
     function endscore() {
