@@ -17,7 +17,7 @@ permalink: /reveal
 
 <div id="emitter"></div>
 <script>
-	var audio = new Audio('{{"/podium.mp3" |  baseurl }}');
+	var audio = new Audio('/minipets/podium.mp3');
 	document.getElementById("petimg").src = "{{site.baseurl}}/assets/img/pets/" + localStorage.petlook + "/0.png";
 	function reveal1() {
 		document.getElementById("intro").style.display = "block";
