@@ -74,11 +74,11 @@ var canvas = document.getElementById("canvas");
                     return;
                 }
                 var previousTile = this.floorTiles[this.floorTiles.length - 1];
-                var biggestJumpableHeight = previousTile.height + player.height + 40;
+                var biggestJumpableHeight = previousTile.height + player.height;
                 if(biggestJumpableHeight > this.highestFloor) {
                     biggestJumpableHeight = this.highestFloor;
                 }
-                var lowest = player.height + 40;
+                var lowest = player.height + 100;
                 var randomHeight = Math.floor(Math.random() * biggestJumpableHeight) + lowest;
                 var leftValue = (previousTile.x + previousTile.width);
                 var next = new floor(leftValue, randomHeight);
@@ -124,7 +124,7 @@ var canvas = document.getElementById("canvas");
                     ctx.fillStyle = "blue";
                     ctx.fillRect(tile.x, y, tile.width, tile.height);
                 }
-                ctx.fillStyle = "white";
+                ctx.fillStyle = "black";
                 ctx.font = "20px Arial";
                 ctx.fillText("Speed: " + this.speed, 10, 40);
                 ctx.fillText("Travelled: " + this.distanceTravelled + "m", 10, 75);
@@ -219,8 +219,8 @@ var canvas = document.getElementById("canvas");
         }
         if(localStorage.hunger > 7) {
             alert("Your pet is too hungry to play more games!");
-            window.location = "{{ site.baseurl }}/mypet";
+            window.location = "/minipets/mypet";
         }
         var player_img = new Image();
-        player_img.src = "{{ site.baseurl }}/assets/img/pets/"+localStorage.petlook+"/0.png";
+        player_img.src = "/minipets/assets/img/pets/"+localStorage.petlook+"/0.png";
         load();
