@@ -1,6 +1,8 @@
 # MiniPets
 ### Create a pet. Feed it, play with it, bond with it and show it off to your friend
 
+`Note: This project is horribly unoptomised and has a whole heap of bugs and quirks. Enter at your own risk!`
+
 Minipets is a super fun way to spend your time. Simply create a new pet and a pet will be chosen at random! New pets are added all the time!
 
 You can play a growing selection of games with your pet. Including Reactions and many more.
